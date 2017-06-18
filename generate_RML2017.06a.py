@@ -38,7 +38,7 @@ SNR_VALUE_STEP_SIZE = 2
 # define the default number of vectors to generate at each SNR level. CIFAR-10
 #  has 6000 samples/class. CIFAR-100 has 600. Somewhere in there seems like
 #  right order of magnitude
-DEFAULT_NUM_VECTORS = 128
+DEFAULT_NUM_VECTORS = 1024
 
 apply_channel = True
 
