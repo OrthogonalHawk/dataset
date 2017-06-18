@@ -4,7 +4,7 @@ from scipy.signal import get_window
 from gnuradio import gr, blocks, digital, analog, filter
 from gnuradio.filter import firdes
 import mapper
-sps = 8
+sps = 4
 ebw = 0.35
 
 class transmitter_mapper(gr.hier_block2):
@@ -24,7 +24,6 @@ class transmitter_mapper(gr.hier_block2):
             ntaps)
         self.rrc_filter = filter.pfb_arb_resampler_ccf(samples_per_symbol, rrc_taps)
         self.connect(self, self.mod, self.rrc_filter, self)
-        #self.rate = const.bits_per_symbol()
 
 class transmitter_bpsk(transmitter_mapper):
     modname = "BPSK"
@@ -136,8 +135,11 @@ class transmitter_amssb(gr.hier_block2):
         self.connect( self, self.interp, self.mul, self.add, self.mod, self.filt, self )
         self.connect( self.src, (self.mod,1) )
 
-
 transmitters = {
-    "discrete":[transmitter_bpsk, transmitter_qpsk, transmitter_8psk, transmitter_pam4, transmitter_qam16, transmitter_qam64, transmitter_gfsk, transmitter_cpfsk],
-    "continuous":[transmitter_fm, transmitter_am, transmitter_amssb]
+    "discrete":[transmitter_bpsk, transmitter_qpsk, transmitter_8psk, transmitter_pam4, transmitter_qam16, transmitter_qam64, transmitter_gfsk, transmitter_cpfsk]
     }
+
+#transmitters = {
+#    "discrete":[transmitter_bpsk, transmitter_qpsk, transmitter_8psk, transmitter_pam4, transmitter_qam16, transmitter_qam64, transmitter_gfsk, transmitter_cpfsk],
+#    "continuous":[transmitter_fm, transmitter_am, transmitter_amssb]
+#    }

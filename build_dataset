@@ -1,1 +1,1 @@
-docker run --rm -v $PWD:/code -w /code radioml/minsdr /bin/bash -c "source /gr/setup_env.sh && python generate_RML2016.10a.py"
+sudo docker run --rm -v $PWD:/code -w /code radioml/radioml /bin/bash -c "source /gr/setup_env.sh && python generate_RML2017.06a.py"
